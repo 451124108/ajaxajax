@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.2.1.js"></script>
+</head>
+<style>
+    button{
+        background: paleturquoise;
+        font-size: 16px;
+    }
+</style>
+<body>
+<form action="" method="get">
+    账号：<input type="text" name="user" ><br>
+    密码：<input type="text" name="pass"><br>
+    <button>提交</button>
+</form>
+</body>
+</html>
+<script>
+
+//    let btn=document.querySelector('button');
+//    btn.onclick=function (e) {
+//        e.preventDefault()
+//        var ajax=new XMLHttpRequest();
+//        let str='';
+//        let input=document.querySelectorAll('input');
+//        input.forEach(val=>{
+//            str+=val.name+'='+val.value+'&';
+//        })
+//        str=str.slice(0,-1);
+//        ajax.open('get','index.php?'+str,true);
+//        ajax.setRequestHeader('conten-type','application/x-www-form-urlencoded')
+//        ajax.send()
+//        ajax.onreadystatechange=function () {
+//            if(ajax.readyState==4){
+//                if(ajax.status==200){
+//                  console.log(ajax.responseText);
+//                }
+//            }
+//        }
+//    }
+
+//    get 提交是地址栏能传递的数据的数据量小、安全性低
+//    post 不通过地址栏来传递 数据量较大、安全性相对较高
+//    http 请求的两种方式
+$('button').click(function (e) {
+    e.preventDefault()
+    $.ajax({
+        url:'index.php',
+        type:'post',
+        data:$('form').serialize(),
+        asynch:true,
+        dataType:'text',
+        success:function (mes) {
+            console.log(mes)
+        }
+    })
+})
+
+
+
+
+
+</script>
